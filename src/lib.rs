@@ -1,6 +1,6 @@
 //! A crate with bunch of lazy macros
 
-/// Nacro to exectute subprocess.
+/// Macro to construct subprocess command
 ///
 /// Arguments:
 ///
@@ -10,13 +10,13 @@
 ///
 ///* ```exec_cmd!(cmd=>"cmd_name", [arg1, arg2, ..., argN]) ```
 #[macro_export]
-macro_rules! exec_cmd {
+macro_rules! cmd {
     (cmd=>$cmd:expr, $($arg:expr),*) => { std::process::Command::new($cmd)$(.arg($arg))* }
 }
 
 /// Macro to exectute subprocess silently.
 ///
-/// All output will redirected to null.
+/// All output will be redirected to null.
 ///
 /// Arguments:
 ///
@@ -25,12 +25,15 @@ macro_rules! exec_cmd {
 ///Usage:
 ///
 ///* ```exec_cmd!(cmd=>"cmd_name", [arg1, arg2, ..., argN]) ```
+///
+///Returns status code
 #[macro_export]
 macro_rules! exec_silent_cmd {
     (cmd=>$cmd:expr, $($arg:expr),*) => { std::process::Command::new($cmd)
                                                                  .stderr(std::process::Stdio::null())
                                                                  .stdout(std::process::Stdio::null())
-                                                                 $(.arg($arg))* }
+                                                                 $(.arg($arg))*
+                                                                 .status().unwrap() }
 }
 
 /// Macro to check if given path/string belongs to file.
@@ -47,4 +50,14 @@ macro_rules! is_file {
 #[macro_export]
 macro_rules! is_dir {
     ($path:expr) => { std::fs::metadata($path).ok().map_or(false, |data| data.is_dir()) }
+}
+
+///Trace macro like ```println```
+///
+///It uses ```format_args!``` for creating formatted string from passed arguments.
+///
+///Prints with the following format: ```file!:line! - [type:] [Message]```
+#[macro_export]
+macro_rules! trace {
+    ($($arg:tt)+) => {{ println!("{}", format_args!("{}:{} - {}", file!(), line!(), format_args!($($arg)+))); }};
 }
