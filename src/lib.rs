@@ -41,7 +41,7 @@ macro_rules! exec_silent_cmd {
 /// Returns false if no such file exists or cannot access it.
 #[macro_export]
 macro_rules! is_file {
-    ($path:expr) => { std::fs::metadata($path).ok().map_or(false, |data| data.is_file()) }
+    ($path:expr) => { std::fs::metadata($path).ok().map_or(false, |data| data.is_file()); };
 }
 
 /// Macro to check if given path/string belongs to directory.
@@ -49,7 +49,7 @@ macro_rules! is_file {
 /// Returns false if no such directory exists or cannot access it.
 #[macro_export]
 macro_rules! is_dir {
-    ($path:expr) => { std::fs::metadata($path).ok().map_or(false, |data| data.is_dir()) }
+    ($path:expr) => { std::fs::metadata($path).ok().map_or(false, |data| data.is_dir()); };
 }
 
 ///Trace macro like ```println```
