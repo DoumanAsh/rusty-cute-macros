@@ -61,3 +61,13 @@ macro_rules! is_dir {
 macro_rules! trace {
     ($($arg:tt)+) => {{ println!("{}", format_args!("{}:{} - {}", file!(), line!(), format_args!($($arg)+))); }};
 }
+
+///Multiple-drop macro.
+///
+///It accepts any identifiers so be careful to pass right one.
+#[macro_export]
+macro_rules! drop {
+    ($($arg:ident),+) => {
+        $(drop($arg);)+
+    };
+}

@@ -1,6 +1,6 @@
 [package]
 name = "rusty-cute-macros"
-version = "0.2.6"
+version = "0.3.0"
 authors = ["DoumanAsh <custparasite@gmx.se>"]
 description = "Bunch of lazy macros which i used from time to time"
 documentation = "https://doumanash.github.io/rusty-cute-macros"
