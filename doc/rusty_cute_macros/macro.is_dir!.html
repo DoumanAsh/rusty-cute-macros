@@ -46,7 +46,7 @@
         </span><a id='src-7' href='../src/rusty_cute_macros/lib.rs.html#51-53'>[src]</a></span></h1>
 <pre class='rust macro'>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>is_dir</span> {
-    (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>path</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> { <span class='ident'>std</span>::<span class='ident'>fs</span>::<span class='ident'>metadata</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>path</span>).<span class='ident'>ok</span>().<span class='ident'>map_or</span>(<span class='boolval'>false</span>, <span class='op'>|</span><span class='ident'>data</span><span class='op'>|</span> <span class='ident'>data</span>.<span class='ident'>is_dir</span>()) }
+    (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>path</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> { <span class='ident'>std</span>::<span class='ident'>fs</span>::<span class='ident'>metadata</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>path</span>).<span class='ident'>ok</span>().<span class='ident'>map_or</span>(<span class='boolval'>false</span>, <span class='op'>|</span><span class='ident'>data</span><span class='op'>|</span> <span class='ident'>data</span>.<span class='ident'>is_dir</span>()); };
 }
 </pre>
 <div class='docblock'><p>Macro to check if given path/string belongs to directory.</p>

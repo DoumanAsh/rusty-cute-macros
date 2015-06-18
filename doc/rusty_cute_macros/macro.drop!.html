@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `is_file!` macro in crate `rusty_cute_macros`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, is_file!">
+    <meta name="description" content="API documentation for the Rust `drop!` macro in crate `rusty_cute_macros`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, drop!">
 
-    <title>rusty_cute_macros::is_file! - Rust</title>
+    <title>rusty_cute_macros::drop! - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../main.css">
 
@@ -26,7 +26,7 @@
 
     <section class="sidebar">
         
-        <p class='location'><a href='index.html'>rusty_cute_macros</a></p><script>window.sidebarCurrent = {name: 'is_file!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>rusty_cute_macros</a></p><script>window.sidebarCurrent = {name: 'drop!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </section>
 
     <nav class="sub">
@@ -41,17 +41,19 @@
     </nav>
 
     <section id='main' class="content macro">
-<h1 class='fqn'><span class='in-band'><a href='index.html'>rusty_cute_macros</a>::<wbr><a class='macro' href=''>is_file!</a><wbr></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'><a href='index.html'>rusty_cute_macros</a>::<wbr><a class='macro' href=''>drop!</a><wbr></span><span class='out-of-band'><span id='render-detail'>
             <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-6' href='../src/rusty_cute_macros/lib.rs.html#43-45'>[src]</a></span></h1>
+        </span><a id='src-9' href='../src/rusty_cute_macros/lib.rs.html#69-73'>[src]</a></span></h1>
 <pre class='rust macro'>
-<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>is_file</span> {
-    (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>path</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> { <span class='ident'>std</span>::<span class='ident'>fs</span>::<span class='ident'>metadata</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>path</span>).<span class='ident'>ok</span>().<span class='ident'>map_or</span>(<span class='boolval'>false</span>, <span class='op'>|</span><span class='ident'>data</span><span class='op'>|</span> <span class='ident'>data</span>.<span class='ident'>is_file</span>()); };
+<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>drop</span> {
+    ($(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span>:<span class='ident'>ident</span>),<span class='op'>+</span>) <span class='op'>=&gt;</span> {
+        $(<span class='ident'>drop</span>(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span>);)<span class='op'>+</span>
+    };
 }
 </pre>
-<div class='docblock'><p>Macro to check if given path/string belongs to file.</p>
+<div class='docblock'><p>Multiple-drop macro.</p>
 
-<p>Returns false if no such file exists or cannot access it.</p>
+<p>It accepts any identifiers so be careful to pass right one.</p>
 </div></section>
     <section id='search' class="content hidden"></section>
 
