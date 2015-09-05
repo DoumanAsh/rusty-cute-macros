@@ -41,19 +41,31 @@
     </nav>
 
     <section id='main' class="content macro">
-<h1 class='fqn'><span class='in-band'><a href='index.html'>rusty_cute_macros</a>::<wbr><a class='macro' href=''>trace!</a><wbr></span><span class='out-of-band'><span id='render-detail'>
-            <a id="collapse-all" href="#">[-]</a>&nbsp;<a id="expand-all" href="#">[+]</a>
-        </span><a id='src-8' href='../src/rusty_cute_macros/lib.rs.html#61-63'>[src]</a></span></h1>
+<h1 class='fqn'><span class='in-band'><a href='index.html'>rusty_cute_macros</a>::<wbr><a class='macro' href=''>trace!</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-8' class='srclink' href='../src/rusty_cute_macros/lib.rs.html#71-75' title='goto source code'>[src]</a></span></h1>
 <pre class='rust macro'>
 <span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>trace</span> {
-    ($(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span>:<span class='ident'>tt</span>)<span class='op'>+</span>) <span class='op'>=&gt;</span> {{ <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='macro'>format_args</span><span class='macro'>!</span>(<span class='string'>&quot;{}:{} - {}&quot;</span>, <span class='macro'>file</span><span class='macro'>!</span>(), <span class='macro'>line</span><span class='macro'>!</span>(), <span class='macro'>format_args</span><span class='macro'>!</span>($(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span>)<span class='op'>+</span>))); }};
+    ($(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span>:<span class='ident'>tt</span>)<span class='op'>+</span>) <span class='op'>=&gt;</span> {
+        <span class='macro'>println</span><span class='macro'>!</span>(<span class='string'>&quot;{}&quot;</span>, <span class='macro'>format_args</span><span class='macro'>!</span>(<span class='string'>&quot;{}:{} - {}&quot;</span>, <span class='macro'>file</span><span class='macro'>!</span>(), <span class='macro'>line</span><span class='macro'>!</span>(), <span class='macro'>format_args</span><span class='macro'>!</span>($(<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>arg</span>)<span class='op'>+</span>)));
+    }
 }
 </pre>
 <div class='docblock'><p>Trace macro like <code>println</code></p>
 
 <p>It uses <code>format_args!</code> for creating formatted string from passed arguments.</p>
 
-<p>Prints with the following format: <code>file!:line! - [type:] [Message]</code></p>
+<p>Prints with the following format: <code>file!:line! - [Message]</code></p>
+
+<h1 id="time-feature" class='section-header'><a
+                           href="#time-feature">Time feature</a></h1>
+<p>By adding <code>time</code> crate and enabling feature <code>time</code>
+the date in following format will be used: <code>[dd/mt/yy hh-mm-ss.ms]</code></p>
+
+<p>Example of enabling:
+<code>rusty-cute-macros = { version = &quot;*&quot;, features = [&quot;time&quot;] }</code></p>
 </div></section>
     <section id='search' class="content hidden"></section>
 
@@ -86,6 +98,10 @@
                 <code>struct</code>, <code>enum</code>,
                 <code>trait</code>, <code>typedef</code> (or
                 <code>tdef</code>).
+            </p>
+            <p>
+                Search functions by type signature (e.g.
+                <code>vec -> usize</code>)
             </p>
         </div>
     </div>
