@@ -1,11 +1,15 @@
 [package]
 name = "rusty-cute-macros"
-version = "0.3.0"
+version = "0.3.1"
 authors = ["DoumanAsh <custparasite@gmx.se>"]
 description = "Bunch of lazy macros which i used from time to time"
 documentation = "https://doumanash.github.io/rusty-cute-macros"
 repository = "https://github.com/DoumanAsh/rusty-cute-macros"
 license = "MIT"
+
+[dependencies.time]
+version = "*"
+optional = true
 
 [lib]
 name = "rusty_cute_macros"

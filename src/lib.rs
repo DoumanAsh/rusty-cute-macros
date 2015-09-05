@@ -1,12 +1,14 @@
 //! A crate with bunch of lazy macros
+#[cfg(feature = "time")]
+extern crate time;
 
-/// Macro to construct subprocess command
+///Macro to construct subprocess command
 ///
-/// Arguments:
+///# Arguments:
 ///
 ///* ```cmd``` - to specify command name.
 ///
-///Usage:
+///# Usage:
 ///
 ///* ```exec_cmd!(cmd=>"cmd_name", [arg1, arg2, ..., argN]) ```
 #[macro_export]
@@ -14,15 +16,15 @@ macro_rules! cmd {
     (cmd=>$cmd:expr, $($arg:expr),*) => { std::process::Command::new($cmd)$(.arg($arg))* }
 }
 
-/// Macro to exectute subprocess silently.
+///Macro to exectute subprocess silently.
 ///
-/// All output will be redirected to null.
+///All output will be redirected to null.
 ///
-/// Arguments:
+///# Arguments:
 ///
 ///* ```cmd``` - to specify command name.
 ///
-///Usage:
+///# Usage:
 ///
 ///* ```exec_cmd!(cmd=>"cmd_name", [arg1, arg2, ..., argN]) ```
 ///
@@ -56,11 +58,30 @@ macro_rules! is_dir {
 ///
 ///It uses ```format_args!``` for creating formatted string from passed arguments.
 ///
-///Prints with the following format: ```file!:line! - [type:] [Message]```
+///Prints with the following format: ```file!:line! - [Message]```
+///
+///# Time feature
+///By adding ```time``` crate and enabling feature ```time```
+///the date in following format will be used: ```[dd/mt/yy hh-mm-ss.ms]```
+///
+///Example of enabling:
+///```rusty-cute-macros = { version = "*", features = ["time"] }```
+#[cfg(not(feature = "time"))]
 #[macro_export]
 macro_rules! trace {
-    ($($arg:tt)+) => {{ println!("{}", format_args!("{}:{} - {}", file!(), line!(), format_args!($($arg)+))); }};
+    ($($arg:tt)+) => {
+        println!("{}", format_args!("{}:{} - {}", file!(), line!(), format_args!($($arg)+)));
+    }
 }
+
+#[cfg(feature = "time")]
+#[macro_export]
+macro_rules! trace {
+    ($($arg:tt)+) => {
+        println!("{}", format_args!("[{}] {}:{} - {}", time::now().strftime("%x %X.%f").unwrap(), file!(), line!(), format_args!($($arg)+)));
+    }
+}
+
 
 ///Multiple-drop macro.
 ///
