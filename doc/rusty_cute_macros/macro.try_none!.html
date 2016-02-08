@@ -4,10 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="generator" content="rustdoc">
-    <meta name="description" content="API documentation for the Rust `is_file!` macro in crate `rusty_cute_macros`.">
-    <meta name="keywords" content="rust, rustlang, rust-lang, is_file!">
+    <meta name="description" content="API documentation for the Rust `try_none!` macro in crate `rusty_cute_macros`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, try_none!">
 
-    <title>rusty_cute_macros::is_file! - Rust</title>
+    <title>rusty_cute_macros::try_none! - Rust</title>
 
     <link rel="stylesheet" type="text/css" href="../rustdoc.css">
     <link rel="stylesheet" type="text/css" href="../main.css">
@@ -27,7 +27,7 @@
 
     <nav class="sidebar">
         
-        <p class='location'><a href='index.html'>rusty_cute_macros</a></p><script>window.sidebarCurrent = {name: 'is_file!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+        <p class='location'><a href='index.html'>rusty_cute_macros</a></p><script>window.sidebarCurrent = {name: 'try_none!', ty: 'macro', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
     <nav class="sub">
@@ -42,18 +42,16 @@
     </nav>
 
     <section id='main' class="content macro">
-<h1 class='fqn'><span class='in-band'><a href='index.html'>rusty_cute_macros</a>::<wbr><a class='macro' href=''>is_file!</a></span><span class='out-of-band'><span id='render-detail'>
+<h1 class='fqn'><span class='in-band'><a href='index.html'>rusty_cute_macros</a>::<wbr><a class='macro' href=''>try_none!</a></span><span class='out-of-band'><span id='render-detail'>
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-6' class='srclink' href='../src/rusty_cute_macros/lib.rs.html#45-47' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-10' class='srclink' href='../src/rusty_cute_macros/lib.rs.html#98-103' title='goto source code'>[src]</a></span></h1>
 <pre class='rust macro'>
-<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>is_file</span> {
-    (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>path</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> { ... };
+<span class='macro'>macro_rules</span><span class='macro'>!</span> <span class='ident'>try_none</span> {
+    (<span class='macro-nonterminal'>$</span><span class='macro-nonterminal'>expr</span>:<span class='ident'>expr</span>) <span class='op'>=&gt;</span> { ... };
 }</pre>
-<div class='docblock'><p>Macro to check if given path/string belongs to file.</p>
-
-<p>Returns false if no such file exists or cannot access it.</p>
+<div class='docblock'><p><code>try!</code> clone that returns None instead of Err<T></p>
 </div></section>
     <section id='search' class="content hidden"></section>
 
