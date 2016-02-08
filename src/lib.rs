@@ -92,3 +92,13 @@ macro_rules! drop {
         $(drop($arg);)+
     };
 }
+
+///```try!``` clone that returns None instead of Err<T>
+#[macro_export]
+macro_rules! try_none {
+    ($expr:expr) => (match $expr {
+        Ok(val) => val,
+        Err(_) => return None,
+    })
+}
+
